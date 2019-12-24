@@ -36,7 +36,7 @@
      
                  <div class="pt-5">
                  <div class="fb-comments"
-						data-href="https://viblo.asia/p/thao-tac-voi-file-excel-trong-java-su-dung-api-apache-poi-lPXzgajxRAg"
+						data-href="${news.comment}"
 						data-width="" data-numposts="1"></div>
                      <%-- <div class="section-title">
                       <h2 class="mb-5">6 Comments</h2>

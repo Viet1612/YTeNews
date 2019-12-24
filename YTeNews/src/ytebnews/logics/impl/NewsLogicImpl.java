@@ -12,6 +12,7 @@ import ytebnews.dao.impl.NewsDaoImpl;
 import ytebnews.entities.News;
 import ytebnews.logics.NewsLogic;
 import ytebnews.utils.Common;
+import ytebnews.utils.Constant;
 
 /**
  * @author VietTT
@@ -51,6 +52,7 @@ public class NewsLogicImpl implements NewsLogic {
 	 */
 	@Override
 	public void insertNewAuthor(News news) throws ClassNotFoundException, SQLException {
+		news.setComment(Constant.COMMENT_LINK + Common.getSalt());
 		newsDao.insertNewAuthor(news);
 		
 	}

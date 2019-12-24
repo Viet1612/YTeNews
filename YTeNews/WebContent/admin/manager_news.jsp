@@ -141,7 +141,7 @@
 										<th style="width: 12%">Image</th>
 										<th style="width: 8%">Category</th>
 										<th style="width: 12%">Title</th>
-										<th style="width: 3%">Content</th>
+										<th style="width: 33%">Content</th>
 										<th style="width: 10%">Author</th>
 										<th style="width: 6%">Date Post</th>
 										<th style="width: 6%">Action</th>

@@ -185,15 +185,7 @@ public class Constant {
 	public static final int MAX_LENGTH_LOGIN_NAME = 15;
 	public static final int MIN_LENGTH_PASS = 5;
 	public static final int MAX_LENGTH_PASS = 15;
-	
-	
-
-	
-	
-	
-
-	
-	
+	public static final String COMMENT_LINK = "https://comment.com/";
 	
 
 

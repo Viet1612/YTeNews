@@ -22,9 +22,24 @@ public class News {
 	private int userId;
 	private long view;
 	private int approve;
+	private String comment;
 	
 	
 
+
+	/**
+	 * @return the comment
+	 */
+	public String getComment() {
+		return comment;
+	}
+
+	/**
+	 * @param comment the comment to set
+	 */
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
 	/**
 	 * @return the approve

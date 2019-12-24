@@ -110,7 +110,7 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 				// Câu SQL
 				StringBuilder sqlQuery = new StringBuilder();
 				sqlQuery.append(
-						"SELECT n.news_id, n.category_id, n.news_name, n.approve, c.category_id, c.category_name, n.description, n.content, n.image, n.date, n.user_id, u.full_name, n.view ");
+						"SELECT n.news_id, n.category_id, n.news_name, n.approve, c.category_id, c.category_name, n.description, n.content, n.image, n.date, n.user_id, u.full_name, n.view, n.comment ");
 				sqlQuery.append("FROM (tbl_news AS n LEFT JOIN tbl_category AS c ");
 				sqlQuery.append("ON n.category_id = c.category_id) ");
 				sqlQuery.append("INNER JOIN tbl_user AS u ");
@@ -166,6 +166,7 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 					news.setCategoryId(rs.getInt(Constant.T_CATEGORY_ID));
 					news.setApprove(rs.getInt("approve"));
 					news.setCategoryName(rs.getString(Constant.T_CATEGORY_NAME));
+					news.setComment(rs.getString("comment"));
 					listNews.add(news);
 				}
 			}
@@ -191,8 +192,8 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 			// TẠo câu sql
 			StringBuilder sqlQuery = new StringBuilder();
 			sqlQuery.append(
-					"INSERT INTO tbl_news (user_id, news_name, description, content, image, date, view, approve)");
-			sqlQuery.append("VALUE (?, ?, ?, ?, ?, ?, ?, ?)");
+					"INSERT INTO tbl_news (user_id, news_name, description, content, image, date, view, approve, comment) ");
+			sqlQuery.append("VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến
 			// csdl
 			// Lấy lại key userId tự tăng khi insert
@@ -207,6 +208,7 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 			pst.setString(++index, news.getDatePost());
 			pst.setLong(++index, news.getView());
 			pst.setInt(++index, news.getApprove());
+			pst.setString(++index, news.getComment());
 			pst.executeUpdate();
 
 		} catch (SQLException e) {
@@ -274,7 +276,7 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 				// Câu SQl
 				StringBuilder sqlQuery = new StringBuilder();
 				sqlQuery.append(
-						"SELECT n.news_id, n.category_id, n.news_name, n.approve, c.category_id, c.category_name, n.description, n.content, n.image, n.date, n.user_id, u.full_name, n.view ");
+						"SELECT n.news_id, n.category_id, n.news_name, n.approve, c.category_id, c.category_name, n.description, n.content, n.image, n.date, n.user_id, u.full_name, n.view, n.comment ");
 				sqlQuery.append("FROM (tbl_news AS n LEFT JOIN tbl_category AS c ");
 				sqlQuery.append("ON n.category_id = c.category_id) ");
 				sqlQuery.append("INNER JOIN tbl_user AS u ");
@@ -307,6 +309,7 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 					news.setCategoryId(rs.getInt(Constant.T_CATEGORY_ID));
 					news.setApprove(rs.getInt("approve"));
 					news.setCategoryName(rs.getString(Constant.T_CATEGORY_NAME));
+					news.setComment(rs.getString("comment"));
 				}
 
 			}
@@ -439,7 +442,7 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 			connectDB();
 			StringBuilder sqlQuery = new StringBuilder();
 			sqlQuery.append(
-					"SELECT n.news_id, n.category_id, n.news_name, n.approve, c.category_id, c.category_name, n.description, n.content, n.image, n.date, n.user_id, u.full_name, n.view ");
+					"SELECT n.news_id, n.category_id, n.news_name, n.approve, c.category_id, c.category_name, n.description, n.content, n.image, n.date, n.user_id, u.full_name, n.view, n.comment ");
 			sqlQuery.append("FROM (tbl_news AS n LEFT JOIN tbl_category AS c ");
 			sqlQuery.append("ON n.category_id = c.category_id) ");
 			sqlQuery.append("INNER JOIN tbl_user AS u ");
@@ -482,6 +485,7 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 				news.setCategoryId(rs.getInt(Constant.T_CATEGORY_ID));
 				news.setApprove(rs.getInt("approve"));
 				news.setCategoryName(rs.getString(Constant.T_CATEGORY_NAME));
+				news.setComment(rs.getString("comment"));
 				listNews.add(news);
 			}
 		} catch (SQLException e) {
@@ -513,7 +517,7 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 				// Câu SQL
 				StringBuilder sqlQuery = new StringBuilder();
 				sqlQuery.append(
-						"SELECT n.news_id, n.category_id, n.news_name, n.approve, c.category_id, c.category_name, n.description, n.content, n.image, n.date, n.user_id, u.full_name, n.view ");
+						"SELECT n.news_id, n.category_id, n.news_name, n.approve, c.category_id, c.category_name, n.description, n.content, n.image, n.date, n.user_id, u.full_name, n.view, n.comment ");
 				sqlQuery.append("FROM (tbl_news AS n LEFT JOIN tbl_category AS c ");
 				sqlQuery.append("ON n.category_id = c.category_id) ");
 				sqlQuery.append("INNER JOIN tbl_user AS u ");
@@ -562,6 +566,7 @@ public class NewsDaoImpl extends BaseDaoImpl implements NewsDao {
 					news.setCategoryId(rs.getInt(Constant.T_CATEGORY_ID));
 					news.setApprove(rs.getInt("approve"));
 					news.setCategoryName(rs.getString(Constant.T_CATEGORY_NAME));
+					news.setComment(rs.getString("comment"));
 					listNews.add(news);
 				}
 			}

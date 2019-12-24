@@ -33,9 +33,12 @@
             <div class="pt-5">
                     <p>Categories:  <a href="${pageContext.request.contextPath}/categories.html?categoryid=${news.categoryId}"><c:out value="${news.categoryName}" /></a></p>
                   </div>
-       <%--
+     
                  <div class="pt-5">
-                    <div class="section-title">
+                 <div class="fb-comments"
+						data-href="https://viblo.asia/p/thao-tac-voi-file-excel-trong-java-su-dung-api-apache-poi-lPXzgajxRAg"
+						data-width="" data-numposts="1"></div>
+                     <%-- <div class="section-title">
                       <h2 class="mb-5">6 Comments</h2>
                     </div>
                     <ul class="comment-list">
@@ -147,8 +150,8 @@
                         </div>
       
                       </form>
-                    </div>
-                  </div> --%>
+                    </div> --%>
+                  </div>
           </div>
 
 

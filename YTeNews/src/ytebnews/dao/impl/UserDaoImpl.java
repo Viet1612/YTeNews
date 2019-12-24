@@ -122,7 +122,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 				sqlQuery.append("FROM tbl_user ");
 				sqlQuery.append("WHERE rule = ? ");
 				if (keyName.trim().length() > 0) {
-					sqlQuery.append("AND full_name = ? ");
+					sqlQuery.append("AND full_name LIKE ? ");
 				}
 				sqlQuery.append("ORDER BY full_name ASC, user_id ASC ");
 				sqlQuery.append("LIMIT ?, ?;");
@@ -132,7 +132,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 				int index = 0;
 				pst.setInt(++index, Constant.RULE_AUTHOR);
 				if (keyName.trim().length() > 0) {
-					pst.setString(++index, keyName);
+					pst.setString(++index, "%" + keyName + "%");
 				}
 				pst.setInt(++index, offset);
 				pst.setInt(++index, limit);
@@ -165,7 +165,9 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		return listUser;
 	}
 
-	/* (non-javadoc)
+	/*
+	 * (non-javadoc)
+	 * 
 	 * @see ytebnews.dao.UserDao#getTotalUser(java.lang.String)
 	 */
 	@Override
@@ -180,14 +182,14 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 				sqlQuery.append("FROM tbl_user ");
 				sqlQuery.append("WHERE rule = ? ");
 				if (keyName.trim().length() > 0) {
-					sqlQuery.append("AND full_name = ? ");
+					sqlQuery.append("AND full_name LIKE ? ");
 				}
 				// Trường hợp có chọn group id
 				pst = con.prepareStatement(sqlQuery.toString());
 				int index = 0;
 				pst.setInt(++index, Constant.RULE_AUTHOR);
 				if (keyName.trim().length() > 0) {
-					pst.setString(++index, keyName);
+					pst.setString(++index, "%" + keyName + "%");
 				}
 				rs = pst.executeQuery();
 				// Lấy tổng số bản ghi
@@ -207,7 +209,9 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		return total;
 	}
 
-	/* (non-javadoc)
+	/*
+	 * (non-javadoc)
+	 * 
 	 * @see ytebnews.dao.UserDao#insertUser(ytebnews.entities.User)
 	 */
 	@Override
@@ -216,8 +220,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 			connectDB();
 			// TẠo câu sql
 			StringBuilder sqlQuery = new StringBuilder();
-			sqlQuery.append(
-					"INSERT INTO tbl_user (login_name, full_name, email, tel, pass, salt, rule)");
+			sqlQuery.append("INSERT INTO tbl_user (login_name, full_name, email, tel, pass, salt, rule)");
 			sqlQuery.append("VALUE (?, ?, ?, ?, ?, ?, ?)");
 			// Tao đối tượng prepareStatement để gửi các câu lệnh sql được tham số hóa đến
 			// csdl
@@ -241,7 +244,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		} finally {
 			closeConnectDB();
 		}
-		
+
 	}
 
 }

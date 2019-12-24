@@ -78,8 +78,9 @@ public interface UserLogic {
 	 * @param user
 	 * @throws ClassNotFoundException 
 	 * @throws SQLException 
+	 * @throws NoSuchAlgorithmException 
 	 */
-	public void insertUser(User user) throws SQLException, ClassNotFoundException;
+	public void insertUser(User user) throws SQLException, ClassNotFoundException, NoSuchAlgorithmException;
 	
 	/**
 	 * Check tồn tại 

@@ -78,7 +78,10 @@ public class UserLogicImpl implements UserLogic {
 	 * @see ytebnews.logics.UserLogic#insertUser(ytebnews.entities.User)
 	 */
 	@Override
-	public void insertUser(User user) throws SQLException, ClassNotFoundException {
+	public void insertUser(User user) throws SQLException, ClassNotFoundException, NoSuchAlgorithmException {
+		String salt = Common.getSalt();
+		user.setSalt(salt);
+		user.setPass(Common.encryptPass(user.getPass(), salt));
 		userDao.insertUser(user);
 		
 	}

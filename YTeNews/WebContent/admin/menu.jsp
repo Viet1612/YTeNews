@@ -31,7 +31,7 @@
 				href="${pageContext.request.contextPath}/listuser.do"><i
 					class="fa fa-venus-mars"></i> <span> Management Users</span></a></li>
 			<li><a
-				href="${pageContext.request.contextPath}/admin/manager_contact.jsp"><i
+				href="${pageContext.request.contextPath}/contactadmin.do"><i
 					class="fa fa-wechat"></i> <span> Management Contact</span></a></li>
 
 		</ul>

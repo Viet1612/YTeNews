@@ -46,6 +46,9 @@
                         <h1>
                             List Users
                         </h1>
+                        <div>
+							<h3 style="color: red;">${insertsuccess}${deletesuccess}</h3>
+						</div>
                         <ol class="breadcrumb">
                             <li><a href="${pageContext.request.contextPath}/index.do"><i class="fa fa-dashboard"></i> Home</a></li>
                             <li class="active">List Users</li>
@@ -68,7 +71,7 @@
                                     <input type="hidden" name="action" value="search" />
                                         <div class="col-md-6">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" name="keyname" value="" placeholder="Full name">
+                                                <input type="text" class="form-control" name="keyname" value="${keyname}" placeholder="Full name">
                                                 <span class="input-group-btn">  
                                                     <button class="btn btn-default" type="submit" > 
                                                         Search
@@ -79,7 +82,7 @@
                                     </form>
 
                                     <div class="col-md-6">
-                                        <button onclick="window.location.href='insert_user.jsp'" class="btn btn-success">Add User</button>
+                                      <a href="${pageContext.request.contextPath}/insertuser.do"><button class="btn btn-success">Add User</button></a>  
                                     </div>
                                 </div>
                                                  <br>
@@ -88,11 +91,11 @@
                                     <table class="table table-bordered ">
                                         <tr>
                                             <th style="width: 5%">ID</th>
-                                                <th style="width: 20%">User Name</th>
-                                                <th style="width: 20%">Full Name</th>
+                                                <th style="width: 25%">User Name</th>
+                                                <th style="width: 25%">Full Name</th>
                                                 <th style="width: 15%">Email</th>
                                                 <th style="width: 15%">Tel</th>
-                                                <th style="width: 10%">Action</th>
+                                              <!-- <th style="width: 10%">Action</th>   --> 
                                         </tr>
                                         <c:forEach items="${listuser}" var="user">
                                         <tr>
@@ -102,7 +105,7 @@
                                             <td><c:out value="${user.fullName}" /></td>
                                             <td><c:out value="${user.email}" /></td>
                                             <td><c:out value="${user.tel}" /></td>
-                                            
+                                            <!-- 
                                             <td>			                    		
                                                 <a class="btn btn-sm btn-primary" href="">
                                                     <i class="fa fa-pencil"></i>
@@ -111,6 +114,7 @@
                                                 <a class="btn  btn-sm btn-danger" href=">"><i class="fa fa-trash"></i></a>
                                                 
                                             </td>
+                                            -->
                                         </tr>
                                         </c:forEach>
                                
@@ -137,7 +141,7 @@
 								<td class="lbl_paging"><a
 									href="${url_paging}&currentpage=${previous}">${previouschar}</a>
 									<c:forEach items="${listPaging}" var="Paging">
-										<a href="${url_paging}&currentpage=${Paging}">${Paging}</a>&nbsp;&nbsp;
+										<a <c:if test = "${currentpage == Paging}">style="color: red;"</c:if> href="${url_paging}&currentpage=${Paging}">${Paging}</a>&nbsp;&nbsp;
 									</c:forEach> <a href="${url_paging}&currentpage=${next}">${nextchar}</a></td>
 
 							</tr>

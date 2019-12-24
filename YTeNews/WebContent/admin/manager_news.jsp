@@ -139,12 +139,12 @@
 									<tr>
 										<th style="width: 3%">ID</th>
 										<th style="width: 12%">Image</th>
-										<th style="width: 5%">Category</th>
+										<th style="width: 8%">Category</th>
 										<th style="width: 12%">Title</th>
-										<th style="width: 37%">Content</th>
+										<th style="width: 3%">Content</th>
 										<th style="width: 10%">Author</th>
 										<th style="width: 6%">Date Post</th>
-										<th style="width: 7%">Action</th>
+										<th style="width: 6%">Action</th>
 									</tr>
 									<c:forEach items="${listNews}" var="news">
 										<tr>
@@ -200,7 +200,7 @@
 								<td class="lbl_paging"><a
 									href="${url_paging}&currentpage=${previous}">${previouschar}</a>
 									<c:forEach items="${listPaging}" var="Paging">
-										<a href="${url_paging}&currentpage=${Paging}">${Paging}</a>&nbsp;&nbsp;
+										<a <c:if test = "${currentpage == Paging}">style="color: red;"</c:if> href="${url_paging}&currentpage=${Paging}">${Paging}</a>&nbsp;&nbsp;
 									</c:forEach> <a href="${url_paging}&currentpage=${next}">${nextchar}</a></td>
 
 							</tr>

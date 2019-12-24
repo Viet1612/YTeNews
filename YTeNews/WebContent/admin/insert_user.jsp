@@ -81,13 +81,19 @@
                                 <h3 class="box-title">User Information</h3>
                             </div><!-- /.box-header -->
                             <!-- form start -->
-
-                            <form action="/Asean/UsersServlet" method="post" id = "signupform">
+				<c:forEach items="${listerr}" var="err">
+              	<div class="row">
+                      <div class="col-md-6 form-group" >
+                      <font color = "red">&emsp;&emsp;${err}</font>
+                      </div>
+                  </div>
+                  </c:forEach>
+                            <form action="${pageContext.request.contextPath}/insertuser.do" method="post" id = "signupform">
                                 <div class="box-body">
                                    <div class="form-group">
                                         <label class="col-sm-2 control-label">User Name</label>
                                         <div class="col-sm-8">
-                                            <input onkeyup="InputProName()" id="proname" type="text" class="form-control" name="username" placeholder="Please enter User Name!">		                      	
+                                            <input onkeyup="InputProName()" id="proname" type="text" class="form-control" name="username" placeholder="Please enter User Name!" value="<c:out value="${user.loginName}" />">		                      	
                                         </div>	
                                         <div class="col-sm-2">
                                         </div>	                      
@@ -97,7 +103,7 @@
 		                       <div class="form-group">
                                         <label class="col-sm-2 control-label">Full Name</label>
                                         <div class="col-sm-8">
-                                            <input onkeyup="InputProName()" id="proname" type="text" class="form-control" name="fullname" placeholder="Please enter Full Name!">		                      	
+                                            <input onkeyup="InputProName()" id="proname" type="text" class="form-control" name="fullname" placeholder="Please enter Full Name!" value="<c:out value="${user.fullName}" />">		                      	
                                         </div>	
                                         <div class="col-sm-2">
                                         </div>	                      
@@ -107,7 +113,7 @@
 		                   <div class="form-group">
                                         <label class="col-sm-2 control-label">Email</label>
                                         <div class="col-sm-8">
-                                            <input onkeyup="InputProName()" id="proname" type="text" class="form-control" name="email" placeholder="Please enter Email!">		                      	
+                                            <input onkeyup="InputProName()" id="proname" type="text" class="form-control" name="email" placeholder="Please enter Email!" value="<c:out value="${user.email}" />">		                      	
                                         </div>	
                                         <div class="col-sm-2">
                                         </div>	                      
@@ -117,7 +123,7 @@
 							<div class="form-group">
                                         <label class="col-sm-2 control-label">Tel</label>
                                         <div class="col-sm-8">
-                                            <input onkeyup="InputProName()" id="proname" type="text" class="form-control" name="name" placeholder="Please enter tel!">		                      	
+                                            <input onkeyup="InputProName()" id="proname" type="text" class="form-control" name="tel" placeholder="Please enter tel!" value="<c:out value="${user.tel}" />">		                      	
                                         </div>
                                         <div class="col-sm-2">
                                         </div>			                      
@@ -127,7 +133,7 @@
 		                    <div class="form-group">
                                         <label class="col-sm-2 control-label">Password</label>
                                         <div class="col-sm-8">
-                                            <input onkeyup="InputProName()" id="proname" type="Password" class="form-control" name="password" placeholder="Please enter password!">		                      	
+                                            <input onkeyup="InputProName()" id="proname" type="Password" class="form-control" name="password" placeholder="Please enter password!" value="<c:out value="${user.pass}" />">		                      	
                                         </div>	
                                         <div class="col-sm-2">
                                         </div>		                      
@@ -149,8 +155,8 @@
                                 </div>
 		                 
 		                 <div class="box-footer">
-                                    <a href='manager_news.jsp' class="btn btn-default">Delete</a> 
-                                    <input onclick="return SaveProduct();" id="btnAdd" type="submit" class="btn btn-success pull-right" value='Add'/>
+                                    <a href='${pageContext.request.contextPath}/listuser.do?action=back' class="btn btn-default">Back</a> 
+                                    <input id="btnAdd" type="submit" class="btn btn-success pull-right" value='Add'/>
                                 </div>
                             
                             </form>              

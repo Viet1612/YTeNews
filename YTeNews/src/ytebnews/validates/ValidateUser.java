@@ -53,16 +53,15 @@ public class ValidateUser {
 	 */
 	public List<String> validateUserInfor(User user) throws ClassNotFoundException, SQLException {
 		List<String> listErrMes = new ArrayList<String>();
-		if (!(user.getUserId() > 0)) {
-			// Login Name
-			String loginNameErr = validateLoginName(user.getLoginName());
-			Common.addErr(listErrMes, loginNameErr);
-		}
+		// Login Name
+		System.out.println(user.getLoginName());
+		String loginNameErr = validateLoginName(user.getLoginName());
+		System.out.println(loginNameErr);
+		Common.addErr(listErrMes, loginNameErr);
 
 		// fullname
 		String fullNameErr = validateFullName(user.getFullName());
 		Common.addErr(listErrMes, fullNameErr);
-		;
 
 		// email
 		String emailErr = validateEmail(user.getEmail(), user.getUserId());
@@ -71,15 +70,13 @@ public class ValidateUser {
 		// TEL
 		String telErr = validateTel(user.getTel());
 		Common.addErr(listErrMes, telErr);
-		if (!(user.getUserId() > 0)) {
-			// Pass
-			String passErr = validatePass(user.getPass());
-			Common.addErr(listErrMes, passErr);
+		// Pass
+		String passErr = validatePass(user.getPass());
+		Common.addErr(listErrMes, passErr);
 
-			// PassCon
-			String passConfErr = validatePassConf(user.getPass(), user.getPassConf());
-			Common.addErr(listErrMes, passConfErr);
-		}
+		// PassCon
+		String passConfErr = validatePassConf(user.getPass(), user.getPassConf());
+		Common.addErr(listErrMes, passConfErr);
 		// Code Level
 
 		return listErrMes;
@@ -143,9 +140,7 @@ public class ValidateUser {
 			errMes = MessageProperties.getMesage(Constant.ER005_EMAIL);
 			// Check tồn tại
 		}
-//		else if (tblUserLogic.checkExistEmail(email, userId)) {
-//			errMes = MessageProperties.getMesage(Constant.ER003_EMAIL);
-//		}
+
 		return errMes;
 	}
 

@@ -69,11 +69,13 @@ public class Constant {
 	public static final String EDIT_CATEGORY_JSP = "/admin/insert_category.jsp";
 	public static final String EDIT_NEWS_JSP = "/admin/edit_news.jsp";
 	public static final String MANAGER_USER_JSP = "/admin/manager_users.jsp";
+	public static final String INSERT_USER_JSP = "/admin/insert_user.jsp";	
 	public static final String INDEX_JSP = "/jsp/index.jsp";
 	public static final String CATEGORIES_JSP = "/jsp/categories.jsp";
 	public static final String NEWS_SINGLE_JSP = "/jsp/news_single.jsp";
 	public static final String ERROR_JSP =  "/jsp/404.jsp";
 	public static final String CONTACT_JSP = "/jsp/contact.jsp";
+	public static final String CONTACT_ADMIN_JSP = "/admin/manager_contact.jsp";
 	
 	
 	
@@ -89,16 +91,20 @@ public class Constant {
 	public static final String VIEW_NEWS_URL = "/detailnews.do";
 	public static final String APPROVE_URL = "/approvenews.do";
 	public static final String DELE_NEWS_ADMIN_URL = "/deletenews.do";
+	public static final String INSERT_USER_URL = "/insertuser.do";
 	public static final String LIST_USER_URL = "/listuser.do";
 	public static final String DELE_NEWS_AUTHOR_URL = "/deletenews.at";
 	public static final String VIEW_NEWS_AU_URL = "/detailnews.at";
 	public static final String INSERT_CATEGORY_URL = "/insertcategory.do";
 	public static final String UPDATE_CATEGORY_URL = "/updatecategory.do";
+	public static final String CONTACT_ADMIN_URL = "/contactadmin.do";
+	public static final String DELETE_CONTACT_URL = "/deletecontact.do";
 	public static final String UPDATE_NEWS_URL = "/updatenews.at";
-	public static final String CONTACT_URL = "/contact.html";
+
 	
 	//TIn tức servlet
 	public static final String INDEX_URL = "/index.html";
+	public static final String CONTACT_URL = "/contact.html";
 	public static final String CATERGORIES_NEWS_URL = "/categories.html";
 	public static final String NEWS_URL = "/news.html";
 	//
@@ -165,22 +171,22 @@ public class Constant {
 	public static final String ER003_LOGIN_NAME = "ER003_loginName";
 	public static final String ER019_LOGIN_NAME = "ER019_loginName";
 	public static final String ER001_FULL_NAME = "ER001_fullName";
-	public static final String ER006_FULL_NAME = "ER006_fullName";
 	public static final String ER006_EMAIL = "ER006_email";
 	public static final String ER003_EMAIL = "ER003_email";
 	public static final String ER006_TEL = "ER006_tel";
 	public static final String ER001_PASS = "ER001_loginPass";
-	public static final String ER008_PASSWORD = "ER008_password";
 	public static final String ER007_PASSWORD = "ER007_password";
 	
 	public static final String ER017 = "ER017";
 	
 	public static final String FORMAT_LOGIN_NAME = "^[a-zA-Z_][a-zA-Z0-9_]*";
 	public static final String FORMAT_PASSWORD = "[a-zA-Z0-9]*";
-	public static final int MIN_LENGTH_LOGIN_NAME = 4;
+	public static final int MIN_LENGTH_LOGIN_NAME = 5;
 	public static final int MAX_LENGTH_LOGIN_NAME = 15;
 	public static final int MIN_LENGTH_PASS = 5;
 	public static final int MAX_LENGTH_PASS = 15;
+	
+	
 
 	
 	

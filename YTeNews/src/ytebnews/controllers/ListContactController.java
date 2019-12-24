@@ -11,18 +11,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import ytebnews.entities.User;
-import ytebnews.logics.UserLogic;
-import ytebnews.logics.impl.UserLogicImpl;
+import ytebnews.entities.Contact;
+import ytebnews.logics.ContactLogic;
+import ytebnews.logics.impl.ContactLogicImpl;
 import ytebnews.utils.Common;
 import ytebnews.utils.Constant;
 import ytebnews.utils.MessageProperties;
 
 /**
- * Servlet implementation class ListUserController
+ * Servlet implementation class ListContactController
  */
-@WebServlet(value = { Constant.LIST_USER_URL })
-public class ListUserController extends HttpServlet {
+@WebServlet(value = { Constant.CONTACT_ADMIN_URL })
+public class ListContactController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -32,7 +32,7 @@ public class ListUserController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			UserLogic userLogic = new UserLogicImpl();
+			ContactLogic contactLogic = new ContactLogicImpl();
 			HttpSession session = request.getSession();
 			String keyName = Constant.KEYNAME_DEFAULT;
 			int offset = Constant.OFFSET;
@@ -50,24 +50,15 @@ public class ListUserController extends HttpServlet {
 						currentPage = Common.parseInt(request.getParameter(Constant.CURRENT_PAGE),
 								Constant.CURRENT_PAGE_DEFAULT);
 					}
-				} else if (Constant.BACK.equals(action)) {
-					// lấy từ session
-					keyName = (String) session.getAttribute(Constant.KEYNAME);
-					currentPage = (int) session.getAttribute(Constant.CURRENT_PAGE);
-				} else if (Constant.INSERT_SUCC.equals(action)) {
-					request.setAttribute(Constant.INSERT_SUCC, MessageProperties.getMesage("MSG001"));
 				} else if (Constant.DELE_SUCC.equals(action)) {
 					request.setAttribute(Constant.DELE_SUCC, MessageProperties.getMesage("MSG003"));
-				} else if (Constant.UPDATE_SUCC.equals(action)) {
-					request.setAttribute(Constant.UPDATE_SUCC, MessageProperties.getMesage("MSG006"));
-
 				}
 
 			}
-			int totalUser = userLogic.getTotalUser(keyName);
-			if (totalUser > 0) {
+			int totalContact = contactLogic.getTotalContact(keyName);
+			if (totalContact > 0) {
 				// Tổng số trang
-				int totalPage = Common.getTotalPage(totalUser, limit);
+				int totalPage = Common.getTotalPage(totalContact, limit);
 				// Nếu currentPage > totalPage thì gắn currentPage = totalPage
 				if (currentPage > totalPage) {
 					currentPage = totalPage;
@@ -75,7 +66,7 @@ public class ListUserController extends HttpServlet {
 				// Bản ghi đầu tiên lấy từ offset
 				offset = Common.getOffset(currentPage, limit);
 				// Xử lý hiển thị pagning
-				List<Integer> listPaging = Common.getListPaging(totalUser, limit, currentPage);
+				List<Integer> listPaging = Common.getListPaging(totalContact, limit, currentPage);
 				if (listPaging.size() > 0) {
 					// Xử lý link >>
 					if (totalPage > listPaging.get(listPaging.size() - 1)) {
@@ -90,15 +81,15 @@ public class ListUserController extends HttpServlet {
 					request.setAttribute("listPaging", listPaging);
 				}
 				// LẤY DANH sách News
-				List<User> listUser = userLogic.getListUser(offset, limit, keyName);
-				request.setAttribute("listuser", listUser);
+				List<Contact> listContact = contactLogic.getListContact(offset, limit, keyName);
+				request.setAttribute("listcontact", listContact);
 			}
 
 			session.setAttribute(Constant.KEYNAME, keyName);
 			session.setAttribute(Constant.CURRENT_PAGE, currentPage);
-			request.setAttribute(Constant.TOTAL_USER, totalUser);
+			request.setAttribute("totalcontact", totalContact);
 
-			RequestDispatcher dispatch = request.getServletContext().getRequestDispatcher(Constant.MANAGER_USER_JSP);
+			RequestDispatcher dispatch = request.getServletContext().getRequestDispatcher(Constant.CONTACT_ADMIN_JSP);
 			dispatch.forward(request, response);
 
 		} catch (Exception e) {
